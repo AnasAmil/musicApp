@@ -4,7 +4,8 @@ class Song(models.Model):
 
     title = models.CharField(max_length=200)
     lyrics = models.TextField(max_length=255)
-    song_file = models.FileField(null=True)
+    song_file = models.FileField(upload_to='songs_files/', null=True)
+    song_avatar = models.ImageField(upload_to='songs_affiches/', null=True)
 
     def __str__(self):
         return self.title
