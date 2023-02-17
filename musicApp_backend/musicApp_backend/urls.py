@@ -6,4 +6,5 @@ urlpatterns = [
     path('songs/', include('songs.urls')), 
     # # for accounts/signup
     path("accounts/", include("accounts.urls")),
+    path("categories/", include("categories.urls")),
 ]
