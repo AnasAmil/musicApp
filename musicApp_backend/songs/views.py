@@ -8,3 +8,7 @@ def getSongs(request):
     songs = Song.objects.all()
     serializer = SongSerializer(songs, many=True)
     return Response(serializer.data)
+
+    
+
+    # kd,qsldkn,qslkdnqslkdn,qkslnd,lqksdqlks
