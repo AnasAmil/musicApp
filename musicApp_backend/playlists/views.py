@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Playlist
+from .serializers import PlaylistSerializer
 
-# Create your views here.
+@api_view(['GET'])
+def getPlaylists(request):
+    playlists = Playlist.objects.all()
+    serializer = PlaylistSerializer(playlists, many=True)
+    return Response(serializer.data)

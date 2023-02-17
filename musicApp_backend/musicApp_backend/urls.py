@@ -7,4 +7,5 @@ urlpatterns = [
     # # for accounts/signup
     path("accounts/", include("accounts.urls")),
     path("categories/", include("categories.urls")),
+    path("playlists/", include("playlists.urls")),
 ]
