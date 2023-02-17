@@ -10,5 +10,3 @@ def getSongs(request):
     return Response(serializer.data)
 
     
-
-    # kd,qsldkn,qslkdnqslkdn,qkslnd,lqksdqlks
