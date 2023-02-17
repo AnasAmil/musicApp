@@ -4,6 +4,7 @@ class Song(models.Model):
 
     title = models.CharField(max_length=200)
     lyrics = models.TextField(max_length=255)
+    song_file = models.FileField(null=True)
 
     def __str__(self):
         return self.title
