@@ -22,8 +22,6 @@ def getSongs(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def getSong(request, pk):
-
-    # jkdfhkjsqhfkjqsdhf
             
     try:
         song = Song.objects.get(id=pk)
