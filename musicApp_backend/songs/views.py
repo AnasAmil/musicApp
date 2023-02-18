@@ -9,7 +9,7 @@ def getSongs(request):
 
     if request.method == 'GET':
         songs = Song.objects.all()
-        serializer = SongSerializer(songs, many=True)
+        serializer = SongSerializer(songs, many=True, context={'request': request})
         return Response(serializer.data)
     
     elif request.method == 'POST':
