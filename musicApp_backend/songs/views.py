@@ -22,6 +22,8 @@ def getSongs(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def getSong(request, pk):
+
+    # jkdfhkjsqhfkjqsdhf
             
     try:
         song = Song.objects.get(id=pk)
@@ -29,7 +31,7 @@ def getSong(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = SongSerializer(song, many=False)
+        serializer = SongSerializer(song, many=False, context={'request': request})
         return Response(serializer.data)
 
     elif request.method == 'PUT':
