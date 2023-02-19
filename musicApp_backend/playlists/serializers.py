@@ -7,4 +7,4 @@ class PlaylistSerializer(ModelSerializer):
     songs = SongSerializer(many=True, read_only=True)
     class Meta:
         model = Playlist
-        fields = '__all__'
+        fields = ('id', 'name', 'user', 'visibility', 'playlist_avatar', 'description', 'songs')
