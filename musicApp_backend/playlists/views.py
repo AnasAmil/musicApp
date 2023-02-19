@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from .models import Playlist
 from .serializers import PlaylistSerializer
 from rest_framework import status
+
+
 @api_view(['GET', 'POST'])
 def getPlaylists(request):
 
@@ -27,11 +29,11 @@ def getPlaylist(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-        serializer = PlaylistSerializer(playlist, many=False)
+        serializer = PlaylistSerializer(playlist, many=False, context={'request': request})
         return Response(serializer.data)
     
     elif request.method == 'PUT': # make updates to the an existed data
-        serializer = PlaylistSerializer(playlist, data=request.data)
+        serializer = PlaylistSerializer(playlist, data=request.data, context={'request': request})
         if serializer.is_valid():
             return Response(serializer.data)
         return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)

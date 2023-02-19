@@ -33,7 +33,7 @@ def getSong(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = SongSerializer(song, data=request.data)
+        serializer = SongSerializer(song, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
