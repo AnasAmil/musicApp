@@ -2,12 +2,14 @@ import base64
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from .models import Song
+from categories.serializers import CategoriesSerializer
 
 
 
 class SongSerializer(ModelSerializer):
     mp3_file_base64 = serializers.SerializerMethodField()
     avatar_base64 =  serializers.SerializerMethodField()
+    categorie = CategoriesSerializer(many=False, read_only=True)
     class Meta:
         model = Song
         fields = ('id', 'title', 'lyrics', 'avatar_base64', 'mp3_file_base64', 'categorie')
