@@ -15,7 +15,7 @@ def getCategories(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def showCategorie(request, pk):
+def getCategorie(request, pk):
     
     try:
         user = Categories.objects.get(pk=pk)
