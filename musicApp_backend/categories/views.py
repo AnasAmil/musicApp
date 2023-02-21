@@ -1,12 +1,14 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .models import Categories
 from .serializers import CategoriesSerializer
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
 # Create your views here.
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def getCategories(request):
     categories = Categories.objects.all()
     serializer = CategoriesSerializer(categories, many=True)
@@ -15,6 +17,7 @@ def getCategories(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def getCategorie(request, pk):
     
     try:

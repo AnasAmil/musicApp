@@ -15,9 +15,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# rest framework configuration  
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 # Application definition
 AUTH_USER_MODEL = 'accounts.User'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,11 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    # rest framework
+    'rest_framework.authtoken',
     'rest_framework',
-    'accounts.apps.AccountsConfig', 
-    'songs.apps.SongsConfig',
+    # local apps
     'categories.apps.CategoriesConfig',
     'playlists.apps.PlaylistsConfig',
+    'accounts.apps.AccountsConfig', 
+    'songs.apps.SongsConfig',
 ]
 
 MIDDLEWARE = [
