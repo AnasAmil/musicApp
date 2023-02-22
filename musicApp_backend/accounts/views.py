@@ -2,9 +2,12 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserSerializer, LoginSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework import views
+from rest_framework import permissions
+from django.contrib.auth import login
 # Create your views here.
 
 @api_view(['POST'])
@@ -18,7 +21,32 @@ def registerUser(request):
             token_obj , _ = Token.objects.get_or_create(user=user)
             return Response({'status': 200, 'payload': serializer.data, 'token': str(token_obj), 'messge': 'your data is saved'})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
         
+# class LoginView(views.APIView):
+#     # This view should be accessible also for unauthenticated users.
+#     permission_classes = (permissions.AllowAny,)
+
+#     def post(self, request, format=None):
+#         serializer = LoginSerializer(data=self.request.data,
+#             context={ 'request': self.request })
+#         serializer.is_valid(raise_exception=True)
+#         user = serializer.validated_data['user']
+#         login(request, user)
+#         return Response(None, status=status.HTTP_202_ACCEPTED)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def loginView(request):
+    
+    serializer = LoginSerializer(data=request.data, context={ 'request': request })
+    serializer.is_valid(raise_exception=True)
+    user = serializer.validated_data['user']
+    login(request, user)
+    return Response(None, status=status.HTTP_202_ACCEPTED)
+
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
