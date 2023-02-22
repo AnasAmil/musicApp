@@ -1,11 +1,12 @@
 import React from 'react'
 import NavbarSimple from './components/NavbarSimple'
+import HeaderSimple from './components/HeaderSimple'
 
 const Home = () => {
   return (
     <div className='flex'>
       <NavbarSimple />
-      <h1 className="underline">MusicApp</h1>
+      <HeaderSimple />
     </div>
   )
 }
