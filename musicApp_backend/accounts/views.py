@@ -10,7 +10,6 @@ from rest_framework.authtoken.models import Token
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def registerUser(request):
-    
     if request.method == 'POST':
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
