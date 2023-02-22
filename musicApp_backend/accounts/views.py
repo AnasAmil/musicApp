@@ -22,18 +22,6 @@ def registerUser(request):
             return Response({'status': 200, 'payload': serializer.data, 'token': str(token_obj), 'messge': 'your data is saved'})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
-        
-# class LoginView(views.APIView):
-#     # This view should be accessible also for unauthenticated users.
-#     permission_classes = (permissions.AllowAny,)
-
-#     def post(self, request, format=None):
-#         serializer = LoginSerializer(data=self.request.data,
-#             context={ 'request': self.request })
-#         serializer.is_valid(raise_exception=True)
-#         user = serializer.validated_data['user']
-#         login(request, user)
-#         return Response(None, status=status.HTTP_202_ACCEPTED)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -57,16 +45,7 @@ def getUsers(request):
         serializer = UserSerializer(user, many=True)
         return Response(serializer.data)
     
-    # elif request.method == 'POST':
-    #     serializer = UserSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         user = User.objects.get(username = serializer.data['username'])
-    #         token_obj , _ = Token.objects.get_or_create(user=user)
-    #         return Response(serializer.data, status=status.HTT)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    
     
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'PUT', 'DELETE'])
