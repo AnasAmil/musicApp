@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import NavbarSimple from './components/NavbarSimple'
 import HeaderSimple from './components/HeaderSimple'

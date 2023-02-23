@@ -5,3 +5,13 @@
 body {
     background-color: #FCEFE3;
 }
+
+.mantine-Input-input {
+    border: none;
+    box-shadow: 5px 5px 5px #52525227 ;
+}
+
+.mantine-Input-input:focus{
+    border: 1px solid;
+    border-color: #F26979 !important;
+}
