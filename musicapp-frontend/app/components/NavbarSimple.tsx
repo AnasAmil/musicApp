@@ -14,7 +14,7 @@ const data = [
     { link: '', label: 'Search', icon: IconSearch },
     { link: '', label: 'Library', icon: IconPlaylist },
     { link: '', label: 'Create Playlist', icon: IconSquarePlus },
-  ];
+];
 
 const NavbarSimple = () => {
 
