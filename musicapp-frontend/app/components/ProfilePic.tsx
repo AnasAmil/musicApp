@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { Menu, UnstyledButton, Group, Avatar, Text } from '@mantine/core'
-import { IconChevronDown, IconUserCircle } from '@tabler/icons-react';
+import { IconChevronDown, IconUserCircle, IconLogout, IconSettings } from '@tabler/icons-react';
 
 
 const ProfilePic = () => {
@@ -19,7 +19,7 @@ const ProfilePic = () => {
                 
             >
                 <Group spacing={7}>
-                    <Avatar src={'https://www.pexels.com/photo/woman-in-black-brassiere-and-white-shorts-4519122/'} radius="xl" size={36} />
+                    <Avatar radius="xl" size={30} />
                     <Text weight={500} size="sm"  mr={3}>
                         Anas
                     </Text>
@@ -29,33 +29,20 @@ const ProfilePic = () => {
         </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item icon={<IconUserCircle stroke={1.5} size={16} />} >
-                Liked posts
-              </Menu.Item>
-              <Menu.Item >
-                Saved posts
-              </Menu.Item>
-              <Menu.Item>
-                Your comments
+                Profile
               </Menu.Item>
 
-              <Menu.Label>Settings</Menu.Label>
-              <Menu.Item >Account settings</Menu.Item>
-              <Menu.Item >
-                Change account
+              <Menu.Item icon={<IconSettings stroke={1.5} size={16} />} >
+                Settings
               </Menu.Item>
-              <Menu.Item>Logout</Menu.Item>
 
               <Menu.Divider />
 
-              <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item>
-                Pause subscription
-              </Menu.Item>
-              <Menu.Item color="red">
-                Delete account
+              <Menu.Item icon={<IconLogout stroke={1.4} size={16}  />} color='red'>
+                Logout
               </Menu.Item>
             </Menu.Dropdown>
-          </Menu>
+      </Menu>
   )
 }
 
