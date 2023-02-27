@@ -1,8 +1,11 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { Group, Image, Title } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import MyCard from "./MyCard";
+import CarouselNextIcon from "./CarouselNextIcon";
+import CarouselPrevIcon from "./CarouselPrevIcon";
+
 
 const data = [
   {
@@ -40,6 +43,16 @@ const data = [
     AlbumTitle: 'night vision',
     artistName: 'Imagine dragons',
   },
+  {
+    image: 'https://i.scdn.co/image/ab67616d0000b2731b30bcd77238301ef8be2f11',
+    AlbumTitle: 'night vision',
+    artistName: 'Imagine dragons',
+  },
+  {
+    image: 'https://i.scdn.co/image/ab67616d0000b2731b30bcd77238301ef8be2f11',
+    AlbumTitle: 'night vision',
+    artistName: 'Imagine dragons',
+  },
 ]
 
 const CategoriesCarousel = () => {
@@ -62,6 +75,9 @@ const CategoriesCarousel = () => {
             align="start"
             slidesToScroll={2}
             className='w-full'
+            loop
+            nextControlIcon={<CarouselNextIcon />}
+            previousControlIcon={<CarouselPrevIcon />}
           >
             {slides}
           </Carousel>
