@@ -36,7 +36,7 @@ const NavbarSimple = () => {
     ))
 
   return (
-    <Navbar height={700} width={{ sm: 220 }} p="md">
+    <Navbar height='100vh' className='w-[15vw]' p="md">
       <Navbar.Section className='border-b-2'>
         <Group position="apart" className='p-2 mb-5'>
           <Code className='font-bold text-lg'>MusicApp</Code>
