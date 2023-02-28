@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-color: #FCEFE3;
+    background: linear-gradient(#FFEEDE, #EADDFB);
 }
 
 .mantine-Input-input {
