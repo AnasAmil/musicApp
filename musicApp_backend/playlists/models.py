@@ -14,7 +14,7 @@ class Playlist(models.Model):
     visibility = models.IntegerField(choices=VisibilityChoices.choices, default=VisibilityChoices.PUBLIC)
     playlist_avatar = models.ImageField(upload_to='playlist_images/', null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    songs = models.ManyToManyField(Song, null=True, blank=True)
+    songs = models.ManyToManyField(Song, blank=True)
 
     def __str__(self):
         return self.name

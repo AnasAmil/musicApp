@@ -1,25 +1,22 @@
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
 from .models import User
 from .serializers import UserSerializer, LoginSerializer
 from rest_framework import status
-from rest_framework.authtoken.models import Token
-from rest_framework import views
-from rest_framework import permissions
 from django.contrib.auth import login
 # Create your views here.
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@authentication_classes([SessionAuthentication])
 def registerUser(request):
     if request.method == 'POST':
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            user = User.objects.get(username = serializer.data['username'])
-            token_obj , _ = Token.objects.get_or_create(user=user)
-            return Response({'status': 200, 'payload': serializer.data, 'token': str(token_obj), 'messge': 'your data is saved'})
+            return Response({'status': 200, 'payload': serializer.data, 'messge': 'your data is saved'})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
 
