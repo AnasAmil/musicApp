@@ -24,7 +24,7 @@ def getPlaylists(request):
 
 
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def getPlaylist(request, pk):
     
