@@ -10,6 +10,8 @@ import Queue from './components/Queue'
 
 const Home = () => {
   const [categories, setCategories] = useState([])
+  const [songs, setSongs] = useState([])
+  const [musicPlaying, setMusicPlaying] = useState({})
    useEffect(() => {
       const getCategories = async () => {
         await axios.get('http://localhost:8000/api/categories/')
@@ -21,9 +23,19 @@ const Home = () => {
           })
       }
 
+      const getSongs = async () => {
+        await axios.get('http://localhost:8000/api/songs/')
+          .then((res) => {
+            setSongs(res.data)
+          }).catch(err => {
+            console.log(err);
+          })
+      }
+
       getCategories()
+      getSongs()
   }, [])  
-  
+
   return (
     <>
       <div className='flex'>
@@ -32,8 +44,8 @@ const Home = () => {
           <HeaderSimple />
           <CategoriesCarousel categories={categories} />
           <div className='flex'>
-            <Playing />
-            <Queue />
+            <Playing musicPlaying={musicPlaying} setMusicPlaying={setMusicPlaying} />
+            <Queue songs={songs} setMusicPlaying={setMusicPlaying} musicPlaying={musicPlaying} />
           </div>
         </div>
       </div>
