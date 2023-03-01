@@ -19,7 +19,6 @@ ALLOWED_HOSTS = []
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -38,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     # rest framework
-    'rest_framework.authtoken',
     'rest_framework',
     # local apps
     'categories.apps.CategoriesConfig',

@@ -1,14 +1,16 @@
 from rest_framework import serializers
 from .models import User
 from django.contrib.auth import authenticate
-
+from django.contrib.auth.hashers import make_password
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'password', 'first_name', 'last_name', 'email', 'is_artist', 'username')
 
-
+    def create(self, validated_data):
+        validated_data['password'] = make_password(validated_data['password'])
+        return super(UserSerializer, self).create(validated_data)
 
 class LoginSerializer(serializers.Serializer):
     """
@@ -36,8 +38,7 @@ class LoginSerializer(serializers.Serializer):
 
         if username and password:
             # Try to authenticate the user using Django auth framework.
-            user = authenticate(request=self.context.get('request'),
-                                username=username, password=password)
+            user = authenticate(request=self.context.get('request'), username=username, password=password)
             if not user:
                 # If we don't have a regular user, raise a ValidationError
                 msg = 'Access denied: wrong username or password.'

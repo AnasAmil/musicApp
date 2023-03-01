@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: linear-gradient(#FFEEDE, #EADDFB);
+}
+
+.mantine-Input-input {
+    border: none;
+    box-shadow: 5px 5px 5px #52525227 ;
+}
+
+.mantine-Input-input:focus{
+    border: 1px solid;
+    border-color: #F26979 !important;
+}
+.mantine-3y8yz3 {
+    border-radius: 10px;
+}
+
+.rhap_progress-indicator {
+    background: #35E03C;
+    border: 3px solid white;
+}
+
+.rhap_volume-indicator{
+    background: #35E03C;
+    border: 1px solid white;
+}
+
+.rhap_progress-bar{
+    height: 2px;
+}
+
+.rhap_volume-bar{
+    height: 2px;
+}
+
+.rhap_main-controls-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rhap_time {
+    color: #A2A0A1;
+    font-size: 12px;
+}
+
+.mantine-UnstyledButton-root:hover {
+    background-color: #F26979;
+}
