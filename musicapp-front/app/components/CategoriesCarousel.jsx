@@ -14,7 +14,7 @@ const CategoriesCarousel = ({ categories }) => {
     return (
         <Group className="p-5">
           <Group className="flex">
-              <Title order={2}>Categories <span className="text-[#9B918B] text-sm font-medium ml-1">-Top 50</span></Title>
+              <Title order={2}>Categories</Title>
           </Group>
           <Carousel
             slideSize="20%"
