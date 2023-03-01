@@ -5,6 +5,7 @@ import HeaderSimple from './components/HeaderSimple'
 import CategoriesCarousel from './components/CategoriesCarousel'
 import axios from 'axios'
 import Playing from './components/Playing'
+import Queue from './components/Queue'
 
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
           <CategoriesCarousel categories={categories} />
           <div className='flex'>
             <Playing />
+            <Queue />
           </div>
         </div>
       </div>
