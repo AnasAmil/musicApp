@@ -7,13 +7,21 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAu
 # Create your views here.
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def getCategories(request):
-    categories = Categories.objects.all()
-    serializer = CategoriesSerializer(categories, many=True)
+    
+    if request.method == 'GET':
+        categories = Categories.objects.all()
+        serializer = CategoriesSerializer(categories, many=True, context={'request': request})
+        return Response(serializer.data)
 
-    return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = CategoriesSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.error, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
