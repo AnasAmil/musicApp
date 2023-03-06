@@ -1,6 +1,8 @@
 from django.db import models
 from accounts.models import User
 from songs.models import Song
+import uuid
+
 
 class VisibilityChoices(models.IntegerChoices):
     PUBLIC = 0, 'Public'
@@ -8,7 +10,7 @@ class VisibilityChoices(models.IntegerChoices):
 
 
 class Playlist(models.Model):
-    
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     name = models.CharField(null=False, max_length=50, blank="")
     description = models.TextField(null=True, max_length=255, blank=True)
     visibility = models.IntegerField(choices=VisibilityChoices.choices, default=VisibilityChoices.PUBLIC)
