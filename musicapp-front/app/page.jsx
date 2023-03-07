@@ -6,9 +6,10 @@ import CategoriesCarousel from './components/CategoriesCarousel'
 import axios from 'axios'
 import Playing from './components/Playing'
 import Queue from './components/Queue'
+import { SessionProvider } from 'next-auth/react'
 
 
-const Home = () => {
+const Home = ({ session }) => {
   const [categories, setCategories] = useState([])
   const [songs, setSongs] = useState([])
   const [musicPlaying, setMusicPlaying] = useState({})
@@ -37,7 +38,7 @@ const Home = () => {
   }, [])  
 
   return (
-    <>
+    <SessionProvider session={session}>
       <div className='flex'>
         <NavbarSimple />
         <div className='w-[85vw]'  >
@@ -49,7 +50,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </SessionProvider>
   )
 }
 
