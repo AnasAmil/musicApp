@@ -4,17 +4,10 @@ import React, { useEffect, useState } from 'react';
 import "../globals.css"
 
 
-const MyCard = ({title,color,categorieImage}) => {
-
-    const [inColor, setIncolor] = useState('')
-    
-    useEffect(() => {
-      setIncolor(color)
-    }, [])
-    
+const MyCard = ({title,color,categorieImage}) => {    
 
     return (
-        <Paper  p="lg" className={`bg-[${inColor}] rounded-lg p-1 shadow-md h-32 overflow-hidden`}>
+        <Paper  p="lg" className={`rounded-lg p-1 shadow-md h-32 overflow-hidden`} style={{backgroundColor: color}}>
             <Text className='font-bold text-white text-lg'>{title}</Text>
             <Image 
                 src={categorieImage}
